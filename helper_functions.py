@@ -1,6 +1,41 @@
 import itertools
 from sklearn.metrics import confusion_matrix
 import random
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+
+def plot_loss_accuracy_curves(history):
+  """
+  Returns separate loss/accuracy curves for training and validation metrics
+  """
+  loss = history.history["loss"]
+  val_loss = history.history["val_loss"]
+
+  accuracy = history.history["accuracy"]
+  val_accuracy = history.history["val_accuracy"]
+
+  epochs = range(len(history.history["loss"]))
+
+  plt.plot(epochs, loss, "b.-", label="training loss")
+  plt.plot(epochs, val_loss,  "r.-", label="validation loss")
+  plt.title("Loss")
+  plt.xlabel("Epochs")
+  plt.ylabel("Loss")
+  plt.grid()
+  plt.legend()
+
+  plt.figure()
+  plt.plot(epochs, accuracy, "b.-", label="training accuracy")
+  plt.plot(epochs, val_accuracy,  "r.-", label="validation accuracy")
+  plt.title("Accuracy")
+  plt.xlabel("Epochs")
+  plt.ylabel("Loss")
+  plt.grid()
+  plt.legend()
+  
+
 
 def plot_decison_boundary(model, X, y):
   """
