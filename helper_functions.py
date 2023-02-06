@@ -136,3 +136,8 @@ def display_WordCloud(tokens):
   plt.tight_layout(pad = 0)
   
   plt.show()
+  
+  
+  profile = ProfileReport(df)
+profile.to_file(output_file = f"{FIGURES_DIR}/pima_diabetes/diabetes.html")
+profile.to_notebook_iframe()
